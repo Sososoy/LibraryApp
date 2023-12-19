@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+    int pageNum = ViewBag.Page ?? 1;
+    int totalCount = ViewBag.TotalCount ?? 0;
+    int maxListCount = ViewBag.MaxListCount ?? 1;
+    int totalPageCount = (int)Math.Ceiling(totalCount /(double)maxListCount);
 }
 
 <h2>Index</h2>
@@ -29,29 +33,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Writer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Summary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publisher)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Published_date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Book_U }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Book_U }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Book_U })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Writer
+            </td>
+            <td>
+                @item.Summary
+            </td>
+            <td>
+                @item.Publisher
+            </td>
+            <td>
+                @item.Published_date
+            </td>
+            <td>
+                <a href="/Home/Edit/@item.Book_U">수정</a>
+                <a href="/Home/Details/@item.Book_U">상세</a>
+                <a href="/Home/Delete/@item.Book_U">삭제</a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div class="text-center">
+    <div class="btn-group">
+        @for (int i = 1; i <= totalPageCount; i++)
+        {
+            <a class="btn btn-@(pageNum==i?"primary":"default")" href="?page=@i">@i</a>
+        }
+
+    </div>
+</div>

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using LibraryApp.Context;
 using LibraryApp.Models;
@@ -15,13 +12,24 @@ namespace LibraryApp.Controllers
     {
         private LibraryDb db = new LibraryDb();
 
-        // GET: Books
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            int maxListCount = 3;
+            int pageNum = 1;
+
+            if (Request.QueryString["page"] != null)
+                pageNum = Convert.ToInt32(Request.QueryString["page"]);
+
+            var books = db.Books.OrderBy(x => x.Book_U).Skip((pageNum - 1) * maxListCount).Take(maxListCount).ToList();
+
+            ViewBag.Page = pageNum;
+            ViewBag.totalCount = db.Books.Count();
+            ViewBag.maxListCount = maxListCount;
+
+
+            return View(books);
         }
 
-        // GET: Books/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,13 +44,11 @@ namespace LibraryApp.Controllers
             return View(book);
         }
 
-        // GET: Books/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Books/Create
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하세요. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하세요.
         [HttpPost]
@@ -59,7 +65,6 @@ namespace LibraryApp.Controllers
             return View(book);
         }
 
-        // GET: Books/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,7 +79,6 @@ namespace LibraryApp.Controllers
             return View(book);
         }
 
-        // POST: Books/Edit/5
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하세요. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하세요.
         [HttpPost]
@@ -90,7 +94,6 @@ namespace LibraryApp.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +108,6 @@ namespace LibraryApp.Controllers
             return View(book);
         }
 
-        // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
