@@ -1,0 +1,6 @@
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp.Library\bin\Debug\LibraryApp.Library.dll
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp.Library\bin\Debug\LibraryApp.Library.pdb
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp.Library\obj\Debug\LibraryApp.Library.csproj.AssemblyReference.cache
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp.Library\obj\Debug\LibraryApp.Library.csproj.CoreCompileInputs.cache
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp.Library\obj\Debug\LibraryApp.Library.dll
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp.Library\obj\Debug\LibraryApp.Library.pdb

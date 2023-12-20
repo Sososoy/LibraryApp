@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace LibraryApp.Library
@@ -39,7 +36,7 @@ namespace LibraryApp.Library
                 string[] urlArr = url.Split('?');
                 string[] paramArr = null;
 
-                if (urlArr.Count() > 0)
+                if (urlArr.Count() > 1)
                 {
                     paramArr = urlArr[1].Split('&');
 

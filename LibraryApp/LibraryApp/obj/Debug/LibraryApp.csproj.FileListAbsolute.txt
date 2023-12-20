@@ -80,3 +80,5 @@ C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp\obj\Debug\LibraryAp
 C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp\obj\Debug\LibraryApp.csproj.CopyComplete
 C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp\obj\Debug\LibraryApp.dll
 C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp\obj\Debug\LibraryApp.pdb
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp\bin\LibraryApp.Library.dll
+C:\Users\s\Documents\GitHub\LibraryApp\LibraryApp\LibraryApp\bin\LibraryApp.Library.pdb

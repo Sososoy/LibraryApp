@@ -28,11 +28,7 @@ namespace LibraryApp.Controllers
 
             if (string.IsNullOrWhiteSpace(keyword))
             {
-                books = db.Books
-                    .OrderBy(x => x.Book_U)
-                    .Skip((pageNum - 1) * maxListCount)
-                    .Take(maxListCount).ToList();
-
+                books = db.Books.ToList();
                 totalCount = books.Count();
             }
             else

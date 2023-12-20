@@ -1,4 +1,5 @@
-﻿@model IEnumerable<LibraryApp.Models.Book>
+﻿@using LibraryApp.Library
+@model IEnumerable<LibraryApp.Models.Book>
 
 @{
     ViewBag.Title = "Index";
@@ -6,6 +7,7 @@
     int totalCount = ViewBag.TotalCount ?? 0;
     int maxListCount = ViewBag.MaxListCount ?? 1;
     int totalPageCount = (int)Math.Ceiling(totalCount / (double)maxListCount);
+    var commonLib = new CommonLibrary();
 }
 
 <h2>Index</h2>
@@ -82,7 +84,7 @@
     <div class="btn-group">
         @for (int i = 1; i <= totalPageCount; i++)
         {
-            <a class="btn btn-@(pageNum==i?"primary":"default")" href="?page=@i">@i</a>
+            <a class="btn btn-@(pageNum==i?"primary":"default")" href="/@commonLib.AddUrlParameter("page", i.ToString())">@i</a>
         }
 
     </div>
