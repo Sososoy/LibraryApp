@@ -32,7 +32,8 @@ namespace LibraryApp.Controllers
                     .OrderBy(x => x.Book_U)
                     .Skip((pageNum - 1) * maxListCount)
                     .Take(maxListCount).ToList();
-                totalCount = db.Books.Count();
+
+                totalCount = books.Count();
             }
             else
             {
@@ -40,25 +41,23 @@ namespace LibraryApp.Controllers
                 {
                     case "Title":
                         books = db.Books.Where(x => x.Title.Contains(keyword)).ToList();
-                        totalCount = db.Books.Where(x => x.Title.Contains(keyword)).Count();
+                        totalCount = books.Count();
                         break;
                     case "Writer":
                         books = db.Books.Where(x => x.Writer.Contains(keyword)).ToList();
-                        totalCount = db.Books.Where(x => x.Writer.Contains(keyword)).Count();
+                        totalCount = books.Count();
                         break;
                     case "Publisher":
                         books = db.Books.Where(x => x.Publisher.Contains(keyword)).ToList();
-                        totalCount = db.Books.Where(x => x.Publisher.Contains(keyword)).Count();
+                        totalCount = books.Count();
                         break;
                 }
 
-
-                books = books
-                    .OrderBy(x => x.Book_U)
-                    .Skip((pageNum - 1) * maxListCount)
-                    .Take(maxListCount).ToList();
-
             }
+            books = books
+                .OrderBy(x => x.Book_U)
+                .Skip((pageNum - 1) * maxListCount)
+                .Take(maxListCount).ToList();
 
             ViewBag.Page = pageNum;
             ViewBag.TotalCount = totalCount;
