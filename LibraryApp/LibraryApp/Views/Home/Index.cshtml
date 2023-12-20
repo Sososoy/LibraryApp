@@ -64,6 +64,19 @@
 </table>
 
 <form style="width:360px; float:left;">
+    @{ 
+        string[] exceptKeys = new string[] { "searchKind", "keyword", "page" };
+    }
+
+    @foreach (var item in commonLib.UrlParameters)
+    {
+        if (!exceptKeys.Contains(item.Key))
+        {
+            <input type="hidden" name="@item.Key" value="@item.Value" />
+
+        }
+    }
+
     <div class="input-group">
         <span class="input-group-addon">
             <select name="searchKind">
@@ -80,12 +93,12 @@
     </div>
 </form>
 
-<div class="text-center">
-    <div class="btn-group">
-        @for (int i = 1; i <= totalPageCount; i++)
-        {
-            <a class="btn btn-@(pageNum==i?"primary":"default")" href="/@commonLib.AddUrlParameter("page", i.ToString())">@i</a>
-        }
+    <div class="text-center">
+        <div class="btn-group">
+            @for (int i = 1; i <= totalPageCount; i++)
+            {
+                <a class="btn btn-@(pageNum==i?"primary":"default")" href="/@commonLib.AddUrlParameter("page", i.ToString())">@i</a>
+            }
 
+        </div>
     </div>
-</div>
